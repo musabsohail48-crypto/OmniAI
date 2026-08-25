@@ -1,0 +1,10 @@
+import Link from "next/link";
+import AdSlot from "@/components/AdSlot";
+export default function Pricing() {
+  const plans = [
+    {name:"Free",price:"$0",desc:"For trying the toolkit",features:["10 generations / day","Basic tools","Standard results","No card required"]},
+    {name:"Pro",price:"$9.99",desc:"For creators and professionals",features:["Higher monthly limits","Access to all tools","Premium prompts","Save projects & history","Priority support"],popular:true},
+    {name:"Business",price:"$29.99",desc:"For teams and agencies",features:["Everything in Pro","Team-ready architecture","API-ready setup","Custom templates","Advanced support"]}
+  ];
+  return <div className="mx-auto max-w-7xl px-5 py-8"><h1 className="text-center text-4xl font-black">Simple, Transparent Pricing</h1><p className="small-muted mt-2 text-center">Start free. Upgrade only when the toolkit becomes part of your workflow.</p><AdSlot label="Pricing ad slot" /><div className="mt-10 grid gap-5 lg:grid-cols-3">{plans.map(p=><div key={p.name} className={`card relative p-7 ${p.popular?"border-violet-500 shadow-glow":""}`}>{p.popular&&<span className="absolute right-5 top-5 rounded-full bg-violet-600 px-3 py-1 text-xs font-bold">POPULAR</span>}<h2 className="text-2xl font-bold">{p.name}</h2><p className="small-muted mt-1">{p.desc}</p><div className="mt-7 text-5xl font-black">{p.price}<span className="text-sm font-normal text-slate-400"> / month</span></div><ul className="mt-7 space-y-3">{p.features.map(f=><li key={f} className="text-sm text-slate-300">✓ {f}</li>)}</ul>{p.name==="Free"?<Link href="/dashboard/tools" className="btn-secondary mt-8 block text-center">Continue Free</Link>:<Link href={`/api/stripe/checkout?plan=${p.name.toLowerCase()}`} className="btn-primary mt-8 block text-center">Get {p.name}</Link>}</div>)}</div></div>;
+}

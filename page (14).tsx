@@ -1,0 +1,5 @@
+const templates = ["YouTube Shorts Script","Product Launch","Instagram Reel","Pinterest Product Pin","Facebook Ad","Cold Outreach Email","Product Description","Business Announcement","Educational Post","Storytelling Video"];
+import AdSlot from "@/components/AdSlot";
+export default function Templates() {
+  return <div className="mx-auto max-w-7xl px-5 py-8"><h1 className="text-4xl font-black">Templates</h1><p className="small-muted mt-2">Ready-made starting points for your next content project.</p><AdSlot label="Templates top ad slot" /><div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">{templates.map(t=><div className="card p-5" key={t}><div className="text-3xl">✨</div><h3 className="mt-4 font-bold">{t}</h3><p className="small-muted mt-2">Open this template in the AI workspace.</p><button className="btn-secondary mt-5 w-full">Use template</button></div>)}</div></div>;
+}

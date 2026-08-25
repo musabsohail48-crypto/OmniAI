@@ -1,0 +1,1 @@
+Place additional brand assets in this folder.
